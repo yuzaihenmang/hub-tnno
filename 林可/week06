@@ -1,1 +1,14 @@
+class TransformerLayer(nn.Module):
+    def __init__(self, hidden_size, num_attention_heads):
+        super().__init__()
+        self.self_attention = MultiHeadAttention(hidden_size, num_attention_heads)  # 自定义多头注意力层
+        self.ffn = FeedForwardLayer(hidden_size)  # 自定义FeedForward层
+        self.layer_norm = nn.LayerNorm(hidden_size)
+
+    def forward(self, x):
+        attn_out = self.self_attention(x)
+        x = self.layer_norm(x + attn_out)  # 残差连接+LayerNorm
+        ffn_out = self.ffn(x)
+        x = self.layer_norm(x + ffn_out)
+        return x
 
