@@ -1,0 +1,13 @@
+CREATE (j:Person {name:'周杰伦', gender:'男', birth:'1979-01-18'})
+CREATE (h:Person {name:'侯佩岑', gender:'女', birth:'1978-12-20'})
+CREATE (k:Person {name:'昆凌', gender:'女', birth:'1993-08-12'})
+CREATE (s:Song {name:'七里香', year:2004, genre:'流行'})
+CREATE (a:Album {name:'范特西', year:2001})
+CREATE (m:Company {name:'杰威尔音乐', industry:'唱片公司'})
+
+CREATE (j)-[:SPOUSE]->(k)
+CREATE (j)-[:EX_GIRLFRIEND]->(h)
+CREATE (j)-[:SING]->(s)
+CREATE (j)-[:RELEASED]->(a)
+CREATE (j)-[:OWNER]->(m)
+
